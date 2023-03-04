@@ -13,7 +13,7 @@ const Signin = () => {
                     <Input.Password />
                 </Form.Item>
                 <Form.Item>
-                    <Button type='primary'>登录</Button>
+                    <Button type='primary' htmlType='submit'>登录</Button>
                 </Form.Item>
             </Form>
         </Layout>

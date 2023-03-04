@@ -6,6 +6,13 @@ interface Props {
 
 declare namespace State {
     export interface AppState {
-        router: RouterState
+        router: RouterState,
+        auth: AuthState
+    }
+    export interface AuthState {
+        signup: {
+            loaded: boolean,
+            success: boolean
+        }
     }
 }
