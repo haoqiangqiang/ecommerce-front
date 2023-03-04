@@ -7,8 +7,10 @@ const Layout: FC<Props> = ({ children, title, subTitle }) => {
         <div>
             <Navigation></Navigation>
             <PageHeader title={title} subTitle={subTitle}></PageHeader>
-            {children}
-        </div>
+            <div style={{ width: "85%", margin: "0 auto" }}>
+                {children}
+            </div>
+        </div >
     )
 }
 
