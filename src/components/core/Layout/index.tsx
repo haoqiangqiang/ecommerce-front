@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
+import Navigation from '../Navigation'
 
 const Layout: FC<Props> = ({ children }) => {
-    return <div>Layout{children}</div>
+    return <div><Navigation></Navigation>{children}</div>
 }
 
 export default Layout
