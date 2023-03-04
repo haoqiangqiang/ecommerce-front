@@ -1,5 +1,7 @@
 interface Props {
-    children: React.ReactNode
+    children: React.ReactNode,
+    title: string,
+    subTitle: string
 }
 
 declare namespace State {
