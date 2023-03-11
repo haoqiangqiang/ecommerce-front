@@ -2,5 +2,8 @@ export enum AuthActions {
     Signup = 'signup',
     SignUpSuccess = 'signUpSuccess',
     SugnUpFail = 'SugnUpFail',
-    ResetSignup = 'ResetSignup'
+    ResetSignup = 'ResetSignup',
+    Signin = 'Signin',
+    SigninSuccess = 'SigninSuccess',
+    SigninFail = 'SigninFail'
 }

@@ -6,6 +6,11 @@ const intialState: State.AuthState = {
         loaded: false,
         success: false,
         message: ''
+    },
+    signin: {
+        loaded: false,
+        success: false,
+        message: ''
     }
 }
 
@@ -32,7 +37,8 @@ const authReducer = (state = intialState, action: AuthUnionType) => {
                 ...state,
                 signup: {
                     loaded: true,
-                    success: false
+                    success: false,
+                    message: action.message
                 }
             }
         case AuthActions.ResetSignup:
@@ -42,6 +48,33 @@ const authReducer = (state = intialState, action: AuthUnionType) => {
                     loaded: false,
                     success: false,
                     message: ''
+                }
+            }
+        case AuthActions.Signin:
+            return {
+                ...state,
+                signin: {
+                    loaded: false,
+                    success: false,
+                    message: ''
+                }
+            }
+        case AuthActions.SigninSuccess:
+            return {
+                ...state,
+                signin: {
+                    loaded: false,
+                    success: true,
+                    message: ''
+                }
+            }
+        case AuthActions.SigninFail:
+            return {
+                ...state,
+                signin: {
+                    loaded: false,
+                    success: false,
+                    message: action.message
                 }
             }
         default:

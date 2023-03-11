@@ -1,11 +1,18 @@
-import { Button, Form, Input } from 'antd'
 import React from 'react'
+import { Button, Form, Input } from 'antd'
 import Layout from '../Layout'
+import { SigninPayload } from '../../../interfaces/auth.interfaces'
+import { useDispatch } from 'react-redux'
+import { signin } from '../../../service/app/auth'
 
 const Signin = () => {
+    const dispatch = useDispatch()
+    const onFinish = (value: SigninPayload) => {
+        dispatch(signin(value))
+    }
     return (
         <Layout title='登录' subTitle=''>
-            <Form>
+            <Form onFinish={onFinish}>
                 <Form.Item name="email" label="邮箱">
                     <Input />
                 </Form.Item>

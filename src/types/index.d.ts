@@ -14,6 +14,11 @@ declare namespace State {
             loaded: boolean,
             success: boolean,
             message: string
+        },
+        signin: {
+            loaded: boolean,
+            success: boolean,
+            message: string
         }
     }
 }
