@@ -45,14 +45,16 @@ export interface SigninFailAction {
     message: string
 }
 
+export interface User {
+    _id: string,
+    name: string,
+    email: string,
+    role: number
+}
+
 export interface AuthData {
     token: string,
-    user: {
-        id: string,
-        name: string,
-        email: string,
-        role: number
-    }
+    user: User
 }
 
 export type AuthUnionType =

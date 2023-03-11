@@ -1,4 +1,5 @@
 import {
+    AuthData,
     ResetSignupAction, SigninAction, SigninFailAction, SigninPayload, SigninSuccessAction,
     SignupAction, SignupFailAction, SignupPayload, SignupSuccessAction
 } from "../../interfaces/auth.interfaces";
@@ -35,3 +36,9 @@ export const SigninFail = (message: string): SigninFailAction => ({
     type: AuthActions.SigninFail,
     message
 })
+
+export const isAuth = (): AuthData | boolean => {
+    const jwt = localStorage.getItem('jwt')
+    if (jwt) return JSON.parse(jwt)
+    return false
+}
