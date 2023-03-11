@@ -1,11 +1,30 @@
-import { Button, Form, Input } from 'antd'
-import React from 'react'
+import { Button, Form, Input, message } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { addCategory } from '../../../service/app/category'
 import Layout from '../../core/Layout'
 
 const AddCategory = () => {
-    const onFinish = (value: { name: string }) {
-        console.log('name', value)
+
+    const [name, setName] = useState<string>('')
+
+    useEffect(() => {
+        const addCateGory = async () => {
+            try {
+                let response = await addCategory(name)
+                message.success(`[${response.data.name}] 分类添加成功！`)
+            } catch (error: any) {
+                message.error(error.response.data.error)
+            }
+        }
+        name && addCateGory()
+    }, [name])
+
+    const onFinish = (value: { name: string }) => {
+        setName(value.name)
     }
+
+
     return <Layout title="addCategory" subTitle=''>
         <Form onFinish={onFinish}>
             <Form.Item name="name" label="分类名称">
@@ -17,6 +36,7 @@ const AddCategory = () => {
                 </Button>
             </Form.Item>
         </Form>
+        <Button><Link to="/admin/dashboard">返回 Dashboard</Link></Button>
     </Layout>
 }
 
