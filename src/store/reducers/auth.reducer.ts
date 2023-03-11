@@ -5,6 +5,7 @@ const intialState: State.AuthState = {
     signup: {
         loaded: false,
         success: false,
+        message: ''
     }
 }
 

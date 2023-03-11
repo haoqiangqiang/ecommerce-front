@@ -12,7 +12,8 @@ declare namespace State {
     export interface AuthState {
         signup: {
             loaded: boolean,
-            success: boolean
+            success: boolean,
+            message: string
         }
     }
 }
