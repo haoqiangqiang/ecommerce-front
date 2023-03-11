@@ -19,4 +19,8 @@ export interface SignupFailAction {
     message: string
 }
 
-export type AuthUnionType = SignupAction | SignupSuccessAction | SignupFailAction
+export interface ResetSignupAction {
+    type: typeof AuthActions.ResetSignup
+}
+
+export type AuthUnionType = SignupAction | SignupSuccessAction | SignupFailAction | ResetSignupAction

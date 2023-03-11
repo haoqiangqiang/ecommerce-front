@@ -1,4 +1,4 @@
-import { SignupAction, SignupFailAction, SignupPayload, SignupSuccessAction } from "../../interfaces/auth.interfaces";
+import { ResetSignupAction, SignupAction, SignupFailAction, SignupPayload, SignupSuccessAction } from "../../interfaces/auth.interfaces";
 import { AuthActions } from "../../store/actions";
 
 export const signup = (payload: SignupPayload): SignupAction => ({
@@ -13,4 +13,8 @@ export const signupSuccess = (): SignupSuccessAction => ({
 export const signupFail = (message: string): SignupFailAction => ({
     type: AuthActions.SugnUpFail,
     message
+})
+
+export const resetSignup = (): ResetSignupAction => ({
+    type: AuthActions.ResetSignup
 })

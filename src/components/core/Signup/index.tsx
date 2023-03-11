@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { SignupPayload } from '../../../interfaces/auth.interfaces'
-import { signup } from '../../../service/app/auth'
+import { resetSignup, signup } from '../../../service/app/auth'
 import Layout from '../Layout'
 
 const Signup = () => {
@@ -50,7 +50,7 @@ const Signup = () => {
     // 离开页面 重置状态
     useEffect(() => {
         return () => {
-            
+            dispatch(resetSignup())
         }
     }, [])
 

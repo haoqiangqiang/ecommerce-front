@@ -35,6 +35,15 @@ const authReducer = (state = intialState, action: AuthUnionType) => {
                     success: false
                 }
             }
+        case AuthActions.ResetSignup:
+            return {
+                ...state,
+                signup: {
+                    loaded: false,
+                    success: false,
+                    message: ''
+                }
+            }
         default:
             return state
     }
