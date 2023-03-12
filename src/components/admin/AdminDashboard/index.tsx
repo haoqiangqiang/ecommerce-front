@@ -21,11 +21,11 @@ const AdminDashboard = () => {
             <Menu>
                 <Menu.Item>
                     <ShoppingCartOutlined />
-                    <Link to="/ceate/category">添加分类</Link>
+                    <Link to="/create/category">添加分类</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <UserOutlined />
-                    <Link to="/creat/product" >添加产品</Link>
+                    <Link to="/create/product" >添加产品</Link>
                 </Menu.Item>
                 <Menu.Item>
                     <OrderedListOutlined />

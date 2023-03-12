@@ -25,19 +25,21 @@ const AddCategory = () => {
     }
 
 
-    return <Layout title="addCategory" subTitle=''>
-        <Form onFinish={onFinish}>
-            <Form.Item name="name" label="分类名称">
-                <Input />
-            </Form.Item>
-            <Form.Item>
-                <Button type='primary' htmlType='submit'>
-                    添加分类
-                </Button>
-            </Form.Item>
-        </Form>
-        <Button><Link to="/admin/dashboard">返回 Dashboard</Link></Button>
-    </Layout>
+    return (
+        <Layout title="addCategory" subTitle=''>
+            <Form onFinish={onFinish}>
+                <Form.Item name="name" label="分类名称">
+                    <Input />
+                </Form.Item>
+                <Form.Item>
+                    <Button type='primary' htmlType='submit'>
+                        添加分类
+                    </Button>
+                </Form.Item>
+            </Form>
+            <Button><Link to="/admin/dashboard">返回 Dashboard</Link></Button>
+        </Layout>
+    )
 }
 
 export default AddCategory
