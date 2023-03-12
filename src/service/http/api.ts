@@ -14,5 +14,5 @@ export const AxiosIns = Axios.create({
 })
 
 export const createCategory = (category: string): Promise<AxiosResponse<Category>> => {
-    return Axios.post(`${API}/category/create/${user._id}`, { name: category })
+    return AxiosIns.post(`${API}/category/create/${user._id}`, { name: category })
 }
