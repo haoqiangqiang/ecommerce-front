@@ -7,3 +7,8 @@ export enum AuthActions {
     SigninSuccess = 'SigninSuccess',
     SigninFail = 'SigninFail'
 }
+
+export enum CategoryActions {
+    GetCategory = "getCategory",
+    GetCategorySucess = "getCategorySucess"
+}

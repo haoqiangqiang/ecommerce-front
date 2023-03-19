@@ -1,3 +1,5 @@
+import { Category } from "../interfaces/category.interface"
+
 interface Props {
     children: React.ReactNode,
     title: string,
@@ -7,7 +9,8 @@ interface Props {
 declare namespace State {
     export interface AppState {
         router: RouterState,
-        auth: AuthState
+        auth: AuthState,
+        category: CategoryState
     }
     export interface AuthState {
         signup: {
@@ -19,6 +22,14 @@ declare namespace State {
             loaded: boolean,
             success: boolean,
             message: string
+        }
+    }
+
+    export interface CategoryState {
+        category: {
+            loaded: boolean,
+            success: boolean,
+            result: Category[]
         }
     }
 }

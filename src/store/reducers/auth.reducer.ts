@@ -1,4 +1,5 @@
 import { AuthUnionType } from "../../interfaces/auth.interfaces"
+import { State } from "../../types"
 import { AuthActions } from "../actions"
 
 const intialState: State.AuthState = {

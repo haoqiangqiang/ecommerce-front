@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form, Input, Select, Upload } from 'antd'
 import {
     UploadOutlined
 } from '@ant-design/icons'
 import Layout from '../../core/Layout'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCategory } from '../../../service/app/category'
+import { State } from '../../../types'
 
 const AddProduct = () => {
+
+    const dispatch = useDispatch()
+
+    const category = useSelector<State.AppState, State.CategoryState>(state => state.category)
+
+    useEffect(() => {
+        dispatch(getCategory())
+    }, [])
+
     return (
         <Layout title='addProduct' subTitle=''>
-            <Form>
+            <Form initialValues={{ category: "" }}>
                 <Form.Item>
                     <Upload>
                         <Button icon={<UploadOutlined />}>上传商品封面</Button>
@@ -26,9 +38,12 @@ const AddProduct = () => {
                 <Form.Item name="category" label="所属分类">
                     <Select>
                         <Select.Option value="">请选择分类</Select.Option>
-                        <Select.Option value="1">测试分类1</Select.Option>
-                        <Select.Option value="2">测试分类2</Select.Option>
-                        <Select.Option value="3">测试分类3</Select.Option>
+                        {
+                            category.category.result.map(item => (
+
+                                <Select.Option value={item._id}>{item.name}</Select.Option>
+                            ))
+                        }
                     </Select>
                 </Form.Item>
                 <Form.Item name="quantity" label="商品数量">
