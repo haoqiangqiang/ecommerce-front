@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Button, Form, Input, Select, Upload } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Button, Form, Input, message, Select, Upload } from 'antd'
 import {
     UploadOutlined
 } from '@ant-design/icons'
@@ -7,10 +7,17 @@ import Layout from '../../core/Layout'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCategory } from '../../../service/app/category'
 import { State } from '../../../types'
+import { RcFile } from 'antd/lib/upload'
+import axios from 'axios'
+import { API } from '../../../config'
+import { isAuth } from '../../../service/app/auth'
+import { AuthData } from '../../../interfaces/auth.interfaces'
 
 const AddProduct = () => {
 
     const dispatch = useDispatch()
+
+    const [file, setFile] = useState<RcFile>()
 
     const category = useSelector<State.AppState, State.CategoryState>(state => state.category)
 
@@ -18,11 +25,42 @@ const AddProduct = () => {
         dispatch(getCategory())
     }, [])
 
-    return (
-        <Layout title='addProduct' subTitle=''>
-            <Form initialValues={{ category: "" }}>
+    const { user, token } = isAuth() as AuthData
+
+    const onFinish = (product: any) => {
+        const formData = new FormData()
+        for (let attr in product) {
+            formData.set(attr, product[attr])
+        }
+        if (typeof file !== undefined) {
+            formData.set('photo', file!)
+        }
+
+        axios.post(`${API}/product/create/${user._id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(() => {
+            message.success(`商品添加成功`)
+        }, () => {
+            message.error(`商品添加失败`)
+        })
+    }
+
+    const addProductForm = () => {
+
+        const props = {
+            accept: 'image/*',
+            beforeUpload: (file: RcFile) => {
+                setFile(file)
+                return false
+            }
+        }
+
+        return (
+            <Form initialValues={{ category: "" }} onFinish={onFinish}>
                 <Form.Item>
-                    <Upload>
+                    <Upload {...props}>
                         <Button icon={<UploadOutlined />}>上传商品封面</Button>
                     </Upload>
                 </Form.Item>
@@ -59,6 +97,12 @@ const AddProduct = () => {
                     <Button type='primary' htmlType='submit'>添加商品</Button>
                 </Form.Item>
             </Form>
+        )
+    }
+
+    return (
+        <Layout title='addProduct' subTitle=''>
+            {addProductForm()}
         </Layout>
     )
 }
