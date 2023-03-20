@@ -1,7 +1,7 @@
 import { GetProductAction, Product, GetProductSuccessAction } from "../../interfaces/product.interface";
 import { ProductActions } from "../../store/actions";
 
-export const getProduct = (sortBy: string, order: string = 'desc', limit: number = 5): GetProductAction => ({
+export const getProduct = (sortBy: string, order: string = 'desc', limit: number = 10): GetProductAction => ({
     type: ProductActions.GetProduct,
     sortBy,
     order,

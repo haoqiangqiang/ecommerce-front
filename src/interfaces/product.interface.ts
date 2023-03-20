@@ -2,7 +2,7 @@ import { ProductActions } from "../store/actions"
 import { Category } from "./category.interface"
 
 export interface Product {
-    id: string,
+    _id: string,
     name: string,
     price: number,
     description: string,

@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
-import { Button, Card, Col, Row, Typography } from 'antd'
+import { Button, Card, Col, Image, Row, Typography } from 'antd'
 import { Link } from 'react-router-dom'
 import { Product } from '../../../interfaces/product.interface'
+import { API } from '../../../config'
 
 const { Title, Paragraph } = Typography
 
@@ -12,7 +13,9 @@ interface Props {
 const ProductItem: FC<Props> = ({ product }) => {
     return (
         <Card
-            cover={<img alt='example' />}
+            cover={
+                <Image src={`${API}/product/photo/${product._id}`} alt={product.name} />
+            }
             actions={[
                 <Button type='link'><Link to="">查看详情</Link></Button>,
                 <Button type='link'><Link to="">加入购物车</Link></Button>

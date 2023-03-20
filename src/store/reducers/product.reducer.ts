@@ -21,9 +21,9 @@ const productReducer = (state = initialState, action: ProductUnionType) => {
             return {
                 ...state,
                 [action.sortBy]: {
+                    ...state[action.sortBy == "createdAt" ? 'createdAt' : 'sold'],
                     loaded: false,
                     success: false,
-                    products: []
                 }
             }
         case ProductActions.GetProductSuccess:
