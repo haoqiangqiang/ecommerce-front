@@ -1,4 +1,5 @@
 import { Category } from "../interfaces/category.interface"
+import { Product } from "../interfaces/product.interface"
 
 interface Props {
     children: React.ReactNode,
@@ -10,7 +11,8 @@ declare namespace State {
     export interface AppState {
         router: RouterState,
         auth: AuthState,
-        category: CategoryState
+        category: CategoryState,
+        product: ProductState
     }
     export interface AuthState {
         signup: {
@@ -30,6 +32,19 @@ declare namespace State {
             loaded: boolean,
             success: boolean,
             result: Category[]
+        }
+    }
+
+    export interface ProductState {
+        createdAt: {
+            loaded: boolean,
+            success: boolean,
+            products: Product[],
+        }
+        sold: {
+            loaded: boolean,
+            success: boolean,
+            products: Product[]
         }
     }
 }

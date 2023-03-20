@@ -1,9 +1,30 @@
+import { ProductActions } from "../store/actions"
+import { Category } from "./category.interface"
+
 export interface Product {
+    id: string,
     name: string,
-    description: string,
     price: number,
-    category: string,
+    description: string,
+    category: Category,
     quantity: number,
     shipping: boolean,
-    photo: string
+    photo: string,
+    sold?: number,
+    createdAt: string
 }
+
+export interface GetProductAction {
+    type: typeof ProductActions.GetProduct,
+    sortBy: string,
+    order: string,
+    limit: number
+}
+
+export interface GetProductSuccessAction {
+    type: typeof ProductActions.GetProductSuccess,
+    payload: Product[],
+    sortBy: string
+}
+
+export type ProductUnionType = GetProductAction | GetProductSuccessAction

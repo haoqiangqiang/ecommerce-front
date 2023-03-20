@@ -12,3 +12,8 @@ export enum CategoryActions {
     GetCategory = "getCategory",
     GetCategorySucess = "getCategorySucess"
 }
+
+export enum ProductActions {
+    GetProduct = 'getProduct',
+    GetProductSuccess = 'getProductSuccess'
+}
