@@ -1,5 +1,6 @@
 import PageHeader from 'antd/lib/page-header'
 import React, { FC } from 'react'
+import { Props } from '../../../types'
 import Navigation from '../Navigation'
 
 const Layout: FC<Props> = ({ children, title, subTitle }) => {

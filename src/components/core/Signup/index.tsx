@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { SignupPayload } from '../../../interfaces/auth.interfaces'
 import { resetSignup, signup } from '../../../service/app/auth'
+import { State } from '../../../types'
 import Layout from '../Layout'
 
 const Signup = () => {

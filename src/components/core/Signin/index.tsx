@@ -5,6 +5,7 @@ import { AuthData, SigninPayload } from '../../../interfaces/auth.interfaces'
 import { useDispatch, useSelector } from 'react-redux'
 import { isAuth, signin } from '../../../service/app/auth'
 import { Redirect } from 'react-router-dom'
+import { State } from '../../../types'
 
 const Signin = () => {
     const dispatch = useDispatch()

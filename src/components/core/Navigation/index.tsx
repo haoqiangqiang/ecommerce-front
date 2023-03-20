@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { RouterState } from 'connected-react-router'
 import { isAuth } from '../../../service/app/auth'
 import { AuthData } from '../../../interfaces/auth.interfaces'
+import { State } from '../../../types'
 
 const useActive = (currentPath: string, path: string): string => {
     return currentPath === path ? "ant-menu-item-selected" : ""
