@@ -14,6 +14,12 @@ export interface Product {
     createdAt: string
 }
 
+export interface Price {
+    id: number,
+    name: string,
+    array: number[]
+}
+
 export interface GetProductAction {
     type: typeof ProductActions.GetProduct,
     sortBy: string,
