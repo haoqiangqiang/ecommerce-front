@@ -12,7 +12,8 @@ const initialState: State.ProductState = {
         loaded: false,
         success: false,
         products: []
-    }
+    },
+    search: []
 }
 
 const productReducer = (state = initialState, action: ProductUnionType) => {
@@ -34,6 +35,11 @@ const productReducer = (state = initialState, action: ProductUnionType) => {
                     success: true,
                     products: action.payload
                 }
+            }
+        case ProductActions.SearchProductSuccess:
+            return {
+                ...state,
+                search: action.products
             }
         default:
             return state

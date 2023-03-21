@@ -27,4 +27,17 @@ export interface GetProductSuccessAction {
     sortBy: string
 }
 
-export type ProductUnionType = GetProductAction | GetProductSuccessAction
+export interface SearchProductAction {
+    type: typeof ProductActions.SearchProduct,
+    payload: {
+        category: string,
+        search: string
+    }
+}
+
+export interface SearchProductSuccessAction {
+    type: typeof ProductActions.SearchProductSuccess,
+    products: Product[]
+}
+
+export type ProductUnionType = GetProductAction | GetProductSuccessAction | SearchProductAction | SearchProductSuccessAction

@@ -45,6 +45,7 @@ declare namespace State {
             loaded: boolean,
             success: boolean,
             products: Product[]
-        }
+        },
+        search: Product[]
     }
 }
