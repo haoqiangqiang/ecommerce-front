@@ -11,6 +11,8 @@ const Search = () => {
 
     const { category } = useSelector<State.AppState, State.CategoryState>(state => state.category)
 
+    const { search } = useSelector<State.AppState, State.ProductState>(state => state.product)
+
     useEffect(() => {
         dispatch(getCategory())
     }, [])
@@ -44,9 +46,11 @@ const Search = () => {
             <Divider />
 
             <Row gutter={[16, 16]}>
-                <Col span="6">
-                    {/* <ProductItem></ProductItem> */}
-                </Col>
+                {search.map(item => (
+                    <Col span="6">
+                        <ProductItem product={item}></ProductItem>
+                    </Col>
+                ))}
             </Row>
         </>
     )
