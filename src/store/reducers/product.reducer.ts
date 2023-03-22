@@ -57,7 +57,7 @@ const productReducer = (state = initialState, action: ProductUnionType) => {
                     suceess: false,
                     result: {
                         size: 0,
-                        data: []
+                        data: state.filter.result.data
                     }
                 }
             }
