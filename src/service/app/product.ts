@@ -1,5 +1,8 @@
-import { type } from "os";
-import { GetProductAction, Product, GetProductSuccessAction, SearchProductAction, SearchProductSuccessAction, FilterProductAction, FilterProductSuccessAction, FilterPayload } from "../../interfaces/product.interface";
+import {
+    GetProductAction, Product, GetProductSuccessAction, SearchProductAction,
+    SearchProductSuccessAction, FilterProductAction, FilterProductSuccessAction,
+    FilterPayload, GetProductByIdAction, GetProductByIdSuccessAction
+} from "../../interfaces/product.interface";
 import { ProductActions } from "../../store/actions";
 
 export const getProduct = (sortBy: string, order: string = 'desc', limit: number = 10): GetProductAction => ({
@@ -34,4 +37,14 @@ export const filterProductSuccess = (payload: { size: number, data: Product[] },
     type: ProductActions.FilterProductSuccess,
     payload,
     skip
+})
+
+export const getProductById = (payload: { productId: string }): GetProductByIdAction => ({
+    type: ProductActions.GetProductById,
+    payload
+})
+
+export const getProductByIdSuccess = (payload: Product): GetProductByIdSuccessAction => ({
+    type: ProductActions.GetProductByIdSuccess,
+    payload
 })

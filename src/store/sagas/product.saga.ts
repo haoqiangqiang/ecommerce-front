@@ -1,8 +1,8 @@
 import Axios from "axios";
 import { put, takeEvery } from "redux-saga/effects";
 import { API } from "../../config";
-import { FilterProductAction, GetProductAction, Product, SearchProductAction } from "../../interfaces/product.interface";
-import { filterProductSuccess, getProductSuccess, searchProductSuccess } from "../../service/app/product";
+import { FilterProductAction, GetProductAction, GetProductByIdAction, Product, SearchProductAction } from "../../interfaces/product.interface";
+import { filterProductSuccess, getProductByIdSuccess, getProductSuccess, searchProductSuccess } from "../../service/app/product";
 import { ProductActions } from "../actions";
 import { Response } from "../../interfaces/respose.interface"
 
@@ -24,12 +24,18 @@ function* handleSearchProduct({ payload: { search, category } }: SearchProductAc
 }
 
 function* handleFilterProduct(action: FilterProductAction) {
-    let response: Response<Product[]> = yield Axios.post(`${API}/products/filter`, action.payload)
+    let response: Response<{ size: number, data: Product[] }> = yield Axios.post(`${API}/products/filter`, action.payload)
     yield put(filterProductSuccess(response.data, action.payload.skip))
+}
+
+function* handleGetProductById({ payload }: GetProductByIdAction) {
+    let response: Response<Product> = yield Axios.get(`${API}/product/${payload.productId}`)
+    yield put(getProductByIdSuccess(response.data))
 }
 
 export default function* productSaga() {
     yield takeEvery(ProductActions.GetProduct, handleGetProduct)
     yield takeEvery(ProductActions.SearchProduct, handleSearchProduct)
     yield takeEvery(ProductActions.FilterProduct, handleFilterProduct)
+    yield takeEvery(ProductActions.GetProductById, handleGetProductById)
 }

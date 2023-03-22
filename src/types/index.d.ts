@@ -54,6 +54,11 @@ declare namespace State {
                 size: number,
                 data: Product[]
             }
+        },
+        product: {
+            loaded: boolean,
+            success: boolean,
+            result: Product
         }
     }
 }

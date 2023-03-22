@@ -9,7 +9,7 @@ export interface Product {
     category: Category,
     quantity: number,
     shipping: boolean,
-    photo: string,
+    photo: FormData,
     sold?: number,
     createdAt: string
 }
@@ -71,4 +71,16 @@ export interface FilterProductSuccessAction {
     skip: number
 }
 
-export type ProductUnionType = GetProductAction | GetProductSuccessAction | SearchProductAction | SearchProductSuccessAction | FilterProductAction | FilterProductSuccessAction
+export interface GetProductByIdAction {
+    type: typeof ProductActions.GetProductById,
+    payload: {
+        productId: string
+    }
+}
+
+export interface GetProductByIdSuccessAction {
+    type: typeof ProductActions.GetProductByIdSuccess,
+    payload: Product
+}
+
+export type ProductUnionType = GetProductAction | GetProductSuccessAction | SearchProductAction | SearchProductSuccessAction | FilterProductAction | FilterProductSuccessAction  | GetProductByIdAction | GetProductByIdSuccessAction

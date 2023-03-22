@@ -21,6 +21,25 @@ const initialState: State.ProductState = {
             size: 0,
             data: []
         }
+    },
+    product: {
+        loaded: false,
+        success: false,
+        result: {
+            _id: '',
+            name: '',
+            price: 0,
+            description: '',
+            category: {
+                _id: '',
+                name: ''
+            },
+            quantity: 0,
+            sold: 0,
+            photo: new FormData(),
+            shipping: false,
+            createdAt: ''
+        }
     }
 }
 
@@ -75,6 +94,24 @@ const productReducer = (state = initialState, action: ProductUnionType) => {
                         size: action.payload.size,
                         data
                     }
+                }
+            }
+        case ProductActions.GetProductById:
+            return {
+                ...state,
+                product: {
+                    ...state.product,
+                    loaded: false,
+                    success: false
+                }
+            }
+        case ProductActions.GetProductByIdSuccess:
+            return {
+                ...state,
+                product: {
+                    loaded: true,
+                    success: true,
+                    result: action.payload
                 }
             }
         default:
