@@ -18,7 +18,7 @@ const ProductItem: FC<Props> = ({ product }) => {
                 <Image src={`${API}/product/photo/${product._id}`} alt={product.name} />
             }
             actions={[
-                <Button type='link'><Link to="">查看详情</Link></Button>,
+                <Button type='link'><Link to={`/product/${product._id}`}>查看详情</Link></Button>,
                 <Button type='link'><Link to="">加入购物车</Link></Button>
             ]}>
             <Title level={5}>{product.name}</Title>
