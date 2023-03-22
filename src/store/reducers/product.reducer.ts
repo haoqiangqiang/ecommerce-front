@@ -13,7 +13,15 @@ const initialState: State.ProductState = {
         success: false,
         products: []
     },
-    search: []
+    search: [],
+    filter: {
+        suceess: false,
+        loaded: false,
+        result: {
+            size: 0,
+            data: []
+        }
+    }
 }
 
 const productReducer = (state = initialState, action: ProductUnionType) => {
@@ -40,6 +48,34 @@ const productReducer = (state = initialState, action: ProductUnionType) => {
             return {
                 ...state,
                 search: action.products
+            }
+        case ProductActions.FilterProduct:
+            return {
+                ...state,
+                filter: {
+                    loaded: false,
+                    suceess: false,
+                    result: {
+                        size: 0,
+                        data: []
+                    }
+                }
+            }
+        case ProductActions.FilterProductSuccess:
+            let data =
+                action.skip === 0
+                    ? action.payload.data
+                    : [...state.filter.result.data, ...action.payload.data]
+            return {
+                ...state,
+                filter: {
+                    loaded: true,
+                    success: true,
+                    result: {
+                        size: action.payload.size,
+                        data
+                    }
+                }
             }
         default:
             return state

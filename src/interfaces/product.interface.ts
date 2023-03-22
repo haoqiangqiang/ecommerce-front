@@ -20,6 +20,17 @@ export interface Price {
     array: number[]
 }
 
+export interface FilterPayload {
+    order?: string,
+    sortby?: string,
+    limit?: number,
+    skip: number,
+    filter?: {
+        category: string[],
+        price: number[]
+    }
+}
+
 export interface GetProductAction {
     type: typeof ProductActions.GetProduct,
     sortBy: string,
@@ -46,4 +57,18 @@ export interface SearchProductSuccessAction {
     products: Product[]
 }
 
-export type ProductUnionType = GetProductAction | GetProductSuccessAction | SearchProductAction | SearchProductSuccessAction
+export interface FilterProductAction {
+    type: typeof ProductActions.FilterProduct,
+    payload: FilterPayload
+}
+
+export interface FilterProductSuccessAction {
+    type: typeof ProductActions.FilterProductSuccess,
+    payload: {
+        size: number,
+        data: Product[]
+    },
+    skip: number
+}
+
+export type ProductUnionType = GetProductAction | GetProductSuccessAction | SearchProductAction | SearchProductSuccessAction | FilterProductAction | FilterProductSuccessAction

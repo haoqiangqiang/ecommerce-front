@@ -3,14 +3,18 @@ import { Col, Row, Space } from 'antd'
 import Checkbox from '../CheckBox'
 import Layout from '../Layout'
 import RadioBox from '../RadioBox'
+import { useDispatch } from 'react-redux'
+import { filterProduct } from '../../../service/app/product'
 
 
 const Shop = () => {
 
+    const dispatch = useDispatch()
+
     const [myFilters, setMyFilter] = useState<{ category: string[], price: number[] }>({ category: [], price: [] })
 
     useEffect(() => {
-        console.log(myFilters)
+        dispatch(filterProduct({ filter: myFilters, skip: 0 }))
     }, [myFilters])
     const filterDom = () => (
         <>

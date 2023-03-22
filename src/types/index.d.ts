@@ -46,6 +46,14 @@ declare namespace State {
             success: boolean,
             products: Product[]
         },
-        search: Product[]
+        search: Product[],
+        filter: {
+            loaded: boolean,
+            suceess: boolean,
+            result: {
+                size: number,
+                data: Product[]
+            }
+        }
     }
 }
