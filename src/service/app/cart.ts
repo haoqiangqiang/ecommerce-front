@@ -46,3 +46,19 @@ export const updateItem = (productId: string, count: number) => {
         return cart
     }
 }
+
+export const deleteItem = (productId: string) => {
+    let cart: CartItem[] = []
+    if (typeof window !== undefined) {
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart')!)
+        }
+        cart.forEach((item, index) => {
+            if (item._id === productId) {
+                cart.splice(index, 1)
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        return cart
+    }
+}

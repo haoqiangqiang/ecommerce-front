@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import { CartItem } from '../../../interfaces/cart.inerface'
 import { Button, Image, Input } from 'antd'
 import { API } from '../../../config'
-import { updateItem } from '../../../service/app/cart'
+import { deleteItem, updateItem } from '../../../service/app/cart'
 
 interface Props {
     product: CartItem,
@@ -31,7 +31,7 @@ const CartItemFC: FC<Props> = ({ product, setCart }) => {
                 <Input type='number' value={product.count} onChange={handleChange} />
             </td>
             <td className='ant-table-cell'>
-                <Button danger type='primary'>删除</Button>
+                <Button danger type='primary' onClick={() => setCart(deleteItem(product._id)!)} >删除</Button>
             </td>
         </tr>
     )
