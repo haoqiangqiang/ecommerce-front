@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import { Product } from '../../../interfaces/product.interface'
 import { API } from '../../../config'
 import moment from 'moment'
+import { addItem } from '../../../service/app/cart'
+import { useDispatch } from 'react-redux'
+import { push } from 'connected-react-router'
 
 const { Title, Paragraph } = Typography
 
@@ -14,6 +17,14 @@ interface Props {
 }
 
 const ProductItem: FC<Props> = ({ product, showViewProduct = true, showCartBtn = true }) => {
+
+    const dispatch = useDispatch()
+
+    const addCart = () => {
+        addItem(product, () => {
+            dispatch(push('/cart'))
+        })
+    }
 
     const showButtons = () => {
         let buttonArray = []
@@ -26,9 +37,7 @@ const ProductItem: FC<Props> = ({ product, showViewProduct = true, showCartBtn =
         }
         if (showCartBtn) {
             buttonArray.push(
-                <Button type='link'>
-                    <Link to="">加入购物车</Link>
-                </Button>
+                <Button type='link' onClick={addCart}>加入购物车</Button>
             )
         }
         return buttonArray
