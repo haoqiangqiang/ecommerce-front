@@ -23,10 +23,26 @@ export const addItem = (item: Product, next: () => void) => {
 }
 
 export const getCart = (): CartItem[] => {
-    if(typeof window !== undefined) {
-        if(localStorage.getItem('cart')) {
+    if (typeof window !== undefined) {
+        if (localStorage.getItem('cart')) {
             return JSON.parse(localStorage.getItem('cart')!)
         }
     }
     return []
+}
+
+export const updateItem = (productId: string, count: number) => {
+    let cart: CartItem[] = []
+    if (typeof window !== undefined) {
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart')!)
+        }
+        cart.forEach((item, index) => {
+            if (item._id === productId) {
+                cart[index].count = count
+            }
+        })
+        localStorage.setItem('cart', JSON.stringify(cart))
+        return cart
+    }
 }
