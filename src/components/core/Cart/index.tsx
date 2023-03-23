@@ -4,6 +4,7 @@ import { CartItem } from '../../../interfaces/cart.inerface'
 import { getCart } from '../../../service/app/cart'
 import CartItemFC from '../CartItem'
 import Layout from '../Layout'
+import Pay from '../Pay'
 import TotalPrice from '../TotalPrice'
 
 const Cart = () => {
@@ -51,6 +52,9 @@ const Cart = () => {
                     <Divider />
                     <Row>
                         <TotalPrice cart={cart!} setTotalPrice={setTotalPrice} />
+                    </Row>
+                    <Row>
+                        <Pay />
                     </Row>
                 </Col>
             </Row>
