@@ -21,3 +21,12 @@ export const addItem = (item: Product, next: () => void) => {
 
     next()
 }
+
+export const getCart = (): CartItem[] => {
+    if(typeof window !== undefined) {
+        if(localStorage.getItem('cart')) {
+            return JSON.parse(localStorage.getItem('cart')!)
+        }
+    }
+    return []
+}
