@@ -26,14 +26,6 @@ const Orders = () => {
     }
 
     useEffect(() => {
-        async function getOrders() {
-            let response = await Axios.get(`${API}/order/list/${user._id}`, {
-                headers: {
-                    'Authorization': `Brearer ${token}`
-                }
-            })
-            setOrders(response.data)
-        }
         getOrders()
     }, [])
 
