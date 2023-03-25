@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import './style.css'
 import Routes from './router';
 import store, { history } from './store';
+import AnotherStore from './anotherStore';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Routes />
+      <AnotherStore>
+        <Routes />
+      </AnotherStore>
     </ConnectedRouter>
   </Provider>
 );
